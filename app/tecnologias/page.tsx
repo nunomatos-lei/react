@@ -2,7 +2,6 @@
 'use client'; 
 import React from 'react';
 import tecnologias from '@/app/data/tecnologias.json';
-import Card from '../components/Card'; // Ajuste o caminho conforme necessário
 import TecCard from '../components/TecCard';
 
 export default function TecnologiasPage() {

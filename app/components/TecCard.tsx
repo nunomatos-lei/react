@@ -21,7 +21,7 @@ export default function TecCard({ tecnologia }: CardProps) {
         <h2 className="text-lg font-bold mb-2">{tecnologia.title}</h2>
         <p className="text-gray-700 mb-4">{tecnologia.description}</p>
         <div className="text-yellow-500">
-          {'⭐'.repeat(tecnologia.rating)} {/* Exibe as estrelas conforme o rating */}
+          {'⭐'.repeat(tecnologia.rating)} {}
         </div>
       </div>
     </div>
