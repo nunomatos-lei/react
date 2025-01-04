@@ -42,9 +42,10 @@ export default function ProdutosPage() {
     }
   }, [search, products]);
 
-  const handlePurchase = () => {
-      fetch('/api/buy', {
-        method: "POST",
+  const handlePurchase = async () => {
+    try {
+      const response = await fetch('/api/buy', {
+        method: 'POST',
         body: JSON.stringify({
           products : cart.map(product => product.id),
           name: "",
@@ -53,22 +54,21 @@ export default function ProdutosPage() {
         }),
 
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }).then(response =>{
-        if(!response.ok){
-          alert('erro ao comprar');
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      }).then((response) => {
+      });
+
+      if (response.ok) {
         alert('Compra realizada com sucesso!');
         setCart([]);
         localStorage.removeItem('cart');
-      }).catch(() => {
-        console.log("erro ao comprar")
-      })
-
+      } else {
+        alert('Erro ao realizar a compra1.');
+      }
+    } catch (error) {
+      console.error('Erro ao realizar a compra3:', error);
+      alert('Erro ao realizar a compra2.');
+    }
   };
 
   if (error) return <div className="text-red-500">Erro ao carregar os produtos.</div>;
